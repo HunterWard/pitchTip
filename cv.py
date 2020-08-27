@@ -1,8 +1,14 @@
+"""
+cv.py
+
+File to process pitching video
+
+"""
 import numpy as np
 import cv2
 import glob
 
-
+# Returns list of matrices
 def processVideo(video, show=False):
     cap = cv2.VideoCapture(video)
 
@@ -50,14 +56,7 @@ def processVideo(video, show=False):
     cap.release()
     cv2.destroyAllWindows()
 
+    if descriptors[0] == None:
+        descriptors.pop(0)
+
     return descriptors
-
-woodruff = []
-
-processVideo('vid/0.mp4', True)
-
-"""
-for x in glob.glob('vid/*.mp4'):
-    woodruff.append(processVideo(x, True))
-"""
-print(np.shape(woodruff))
